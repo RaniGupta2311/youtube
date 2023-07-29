@@ -1,0 +1,10 @@
+import ButtonList from "./ButtonList";
+import VideoContainer from "./VideoContainer"
+const MainContainer=()=>{
+    return <div>
+        {/* MainContainer */}
+        <ButtonList/>
+        <VideoContainer/>
+    </div>
+}
+export default MainContainer
