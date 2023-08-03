@@ -25,14 +25,12 @@ const appRouter=createBrowserRouter([{
 function App() {
   return (
     <Provider store={store}>
-           <div>
+           <div className="h-screen">
             <Head/>
             <RouterProvider router={appRouter}/>
         </div>
       </Provider>  
   );
-   
-  
 }
 
 export default App;
