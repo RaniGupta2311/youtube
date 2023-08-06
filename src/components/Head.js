@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { GOOGLE_API_KEY, YOUTUBE_SEARCH_API } from "../utils/constants";
-import { json } from "react-router-dom";
+import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../utils/constants";
+import { Link } from "react-router-dom";
+
 import { cacheResults } from "../utils/searchSlice";
 const Head=()=>{
     const [searchQuery,setSearchQuery]=useState("");
@@ -38,8 +39,8 @@ const Head=()=>{
     },[searchQuery])
 
     const getSearchSuggestions = async ()=>{
-        console.log("API CALL "+searchQuery);
-        const data=await fetch(YOUTUBE_SEARCH_API+searchQuery);
+        // console.log("API CALL "+searchQuery);
+        const data=await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API+searchQuery);
         const json=await data.json();
         // console.log(json[1])
         setSuggestions(json[1]);
@@ -54,28 +55,29 @@ const Head=()=>{
         dispatch(toggleMenu());
     }
    
-  const filterSearchResults=(query)=>{
-
-  }
-
+    const handleClick=(value)=>{
+        setSearchQuery(value)
+        console.log("Hello SearchInput "+searchQuery)
+    }
     return (
-        <div className="grid grid-flow-col p-5 m-2 h-[82px] shadow-lg sticky top-0 z-50 w-full bg-white">
+        <div className="grid grid-flow-col p-5 m-2 h-[82px] shadow-lg sticky top-0 z-50 w-full bg-white items-center">
 
-            <div className="flex col-span-2">
+            <div className="flex col-span-2 items-center">
                 <img
-                className="w-10 h-10 sm:w-10 sm:h-10 cursor-pointer"
+                className="w-10 h-10 sm:w-10 sm:h-10 cursor-pointer hover:bg-gray-100 hover:rounded-full"
                 onClick={()=>toggleMenuHandler()}
                  src="https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-5.png" 
                  alt="menu"/>
                  <a href="/">
+
                 <img
-                className="h-8 mx-2 min-w-max"
+                className="h-8 w-14 md:min-w-max"
                 src="https://www.shutterstock.com/image-vector/zdolbuniv-ukraine-march-29-2023-260nw-2281736185.jpg"
                 alt="youtube-logo"/></a>
             </div>
 
             <div className="col-span-9 px-10">
-                <div>
+                <div className="w-[140%] sm:w-[130%] lg:col-span-9">
                     <input 
                     className="w-1/2 border border-gray-400 p-2 rounded-l-full" 
                     type="text"
@@ -85,21 +87,25 @@ const Head=()=>{
                     onBlur={()=>setShowSuggestions(false)}  
                     />
                     <button className="border border-gray-400 px-5 py-2 rounded-r-full bg-gray-100"
-                    onClick={()=>filterSearchResults({searchQuery})}
-                    >
-                    🔍
+                    onClick={(e)=>handleClick(e.target.value)}>
+                   🔍
                     </button>
                 </div>
-                {showSuggestions && <div className="absolute bg-white py-2 px-2 w-[500px] rounded-lg border border-gray-100 shadow-lg">
-                <ul>
-                {suggestions.map((s)=><li key={s} className="py-2 px-5 shadow-sm hover:bg-gray-100"> 🔍 {s}</li>)}
+                {showSuggestions && <div className="absolute bg-white py-2 px-2 w-[75%] md:w-[50%] lg:w-[46%] rounded-lg border border-gray-100 shadow-lg">
+                <ul className="">
+                {suggestions?.map((s)=>{
+                    return <li 
+                    key={s}
+                    className="py-2 px-5 shadow-sm hover:bg-gray-100"
+                    >🔍 {s} 
+</li>})
+                }
                 </ul>
-
             </div>
                 }
             </div>
 
-            <div className="col-span-1">
+            <div className="col-span-1 inline-block">
                 <img
                 className="h-8"
                  src="https://cdn-icons-png.flaticon.com/512/552/552721.png"

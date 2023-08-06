@@ -12,7 +12,7 @@ const VideoCard=({ info })=>{
          <ul>
             <li className="h-14 font-bold py-2 text-left text-ellipsis overflow-hidden ...">{info?.snippet.title}</li>
             <li className="text-left">{info?.snippet.channelTitle}</li>
-            <li className="text-left">{info?.statistics.viewCount} views</li>
+            {info?.statistics?.viewCount?<li className="text-left">{Math.floor(info?.statistics?.viewCount/1000000)>=1?Math.floor(info?.statistics.viewCount/1000000)+"M views":Math.floor(info?.statistics.viewCount/1000)+"K views"}</li>:null}
          </ul>
         </div>
     )

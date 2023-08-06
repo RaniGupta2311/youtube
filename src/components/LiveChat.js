@@ -35,7 +35,7 @@ const LiveChat =()=>{
         </div>
         <form className="w-full p-2 ml-2 border border-black" onSubmit={(e)=>{
             e.preventDefault();
-            console.log("on form sumbit",liveMessage);
+            // console.log("on form sumbit",liveMessage);
             dispatch(addMessage({
                 name:"User_name",
                 message:liveMessage,

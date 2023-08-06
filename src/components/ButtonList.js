@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-const list=["All","Songs","Mixes","Live","Cricket","News","Cooking","Soccer","Rapping","Comedy","Recently Uploaded","Bhakti","Watched"]
+const list=["All","Songs","T-Series","Bholenath","Punjabi","AP Dhillon","90s Hit","Arijit Singh","Mixes","Live","Cricket","News","Cooking","Food","Soccer","Rapping","Trading","Comedy","Recently Uploaded","Bhakti","Watched","College","Workout","Programming","ReactJS"]
 
 const ButtonList=()=>{
     return (
