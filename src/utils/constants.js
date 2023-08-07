@@ -1,6 +1,6 @@
 // const GOOGLE_API_KEY="AIzaSyAnDLWIXjir560GsYEWYIWDxxdYFkr3bDU";
 // const GOOGLE_API_KEY="AIzaSyC_wGBpeaPduhD-gXwNlBHBW1mXq2MQMmk";
-const GOOGLE_API_KEY="AIzaSyDkZkgnBUOkIsnS2FIqpbaCBpwsXyidOAk";
+const GOOGLE_API_KEY="AIzaSyCm0Y4bJBd9HHbbCDIWPdN37XV1MKh4AF4";
 export const YOUTUBE_VIDEOS_API="https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key="+GOOGLE_API_KEY;
 export const YOUTUBE_SEARCH_SUGGESTIONS_API="http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="
 export const OFFSET_LIVE_CHAT=25;
