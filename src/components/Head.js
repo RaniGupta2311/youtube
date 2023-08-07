@@ -98,7 +98,9 @@ const Head = () => {
           <div className="absolute bg-white py-2 px-2 w-[75%] md:w-[50%] lg:w-[46%] rounded-lg border border-gray-100 shadow-lg">
             <ul>
               {suggestions.map((s) =>(<li 
-                  onClick={()=>console.log("hello list")}
+                  onClick={(e)=>{
+                    console.log("hello list")
+                    }}
                   key={s} className="py-2 px-5 shadow-sm hover:bg-gray-100">
                     🔍{s}
                   </li>
